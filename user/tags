@@ -1,0 +1,137 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ARRAYSIZE	testbss.c	5;"	d	file:
+BUFSIZ	sh.c	3;"	d	file:
+CHECK	faultregs.c	43;"	d	file:
+CHECK	faultregs.c	65;"	d	file:
+DEPTH	forktree.c	5;"	d	file:
+FVA	testfile.c	5;"	d	file:
+LOAD_REGS	faultregs.c	23;"	d	file:
+MAXARGS	sh.c	20;"	d	file:
+SAVE_REGS	faultregs.c	13;"	d	file:
+SYMBOLS	sh.c	187;"	d	file:
+TEMP_ADDR	sendpage.c	9;"	d	file:
+TEMP_ADDR_CHILD	sendpage.c	10;"	d	file:
+VA	testptelibrary.c	3;"	d	file:
+VA	testpteshare.c	4;"	d	file:
+WHITESPACE	sh.c	186;"	d	file:
+_gettoken	sh.c	/^_gettoken(char *s, char **p1, char **p2)$/;"	f
+after	faultregs.c	/^static struct regs before, during, after;$/;"	v	typeref:struct:	file:
+before	faultregs.c	/^static struct regs before, during, after;$/;"	v	typeref:struct:regs	file:
+bigarray	testbss.c	/^uint32_t bigarray[ARRAYSIZE];$/;"	v
+bol	num.c	/^int bol = 1;$/;"	v
+bss	init.c	/^char bss[6000];$/;"	v
+buf	cat.c	/^char buf[8192];$/;"	v
+buf	testfdsharing.c	/^char buf[512], buf2[512];$/;"	v
+buf2	testfdsharing.c	/^char buf[512], buf2[512];$/;"	v
+cat	cat.c	/^cat(int f, char *s)$/;"	f
+check_regs	faultregs.c	/^check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,$/;"	f	file:
+childofspawn	testptelibrary.c	/^childofspawn(void)$/;"	f
+childofspawn	testpteshare.c	/^childofspawn(void)$/;"	f
+counter	stresssched.c	/^volatile int counter;$/;"	v
+data	init.c	/^} data = {$/;"	v	typeref:struct:__anon1
+debug	sh.c	/^int debug = 0;$/;"	v
+dumbfork	dumbfork.c	/^dumbfork(void)$/;"	f
+duppage	dumbfork.c	/^duppage(envid_t dstenv, void *addr)$/;"	f
+during	faultregs.c	/^static struct regs before, during, after;$/;"	v	typeref:struct:	file:
+eflags	faultregs.c	/^	uint32_t eflags;$/;"	m	struct:regs	file:
+eip	faultregs.c	/^	uintptr_t eip;$/;"	m	struct:regs	file:
+esp	faultregs.c	/^	uintptr_t esp;$/;"	m	struct:regs	file:
+flag	ls.c	/^int flag[256];$/;"	v
+forkchild	forktree.c	/^forkchild(const char *cur, char branch)$/;"	f
+forktree	forktree.c	/^forktree(const char *cur)$/;"	f
+get_random_priority	hello.c	/^int get_random_priority(){$/;"	f
+gettoken	sh.c	/^gettoken(char *s, char **p1)$/;"	f
+handler	faultalloc.c	/^handler(struct UTrapframe *utf)$/;"	f
+handler	faultallocbad.c	/^handler(struct UTrapframe *utf)$/;"	f
+handler	faultdie.c	/^handler(struct UTrapframe *utf)$/;"	f
+hello	buggyhello2.c	/^const char *hello = "hello, world\\n";$/;"	v
+line	num.c	/^int line = 0;$/;"	v
+ls	ls.c	/^ls(const char *path, const char *prefix)$/;"	f
+ls1	ls.c	/^ls1(const char *prefix, bool isdir, off_t size, const char *name)$/;"	f
+lsdir	ls.c	/^lsdir(const char *path, const char *prefix)$/;"	f
+msg	testfile.c	/^const char *msg = "This is the NEW message of the day!\\n\\n";$/;"	v
+msg	testpipe.c	/^char *msg = "Now is the time for all good men to come to the aid of their party.";$/;"	v
+msg	testptelibrary.c	/^const char *msg = "hello, world\\n";$/;"	v
+msg	testpteshare.c	/^const char *msg = "hello, world\\n";$/;"	v
+msg1	init.c	/^	char msg1[5000];$/;"	m	struct:__anon1	file:
+msg2	init.c	/^	char msg2[1000];$/;"	m	struct:__anon1	file:
+msg2	testptelibrary.c	/^const char *msg2 = "goodbye, world\\n";$/;"	v
+msg2	testpteshare.c	/^const char *msg2 = "goodbye, world\\n";$/;"	v
+num	num.c	/^num(int f, const char *s)$/;"	f
+pgfault	faultregs.c	/^pgfault(struct UTrapframe *utf)$/;"	f	file:
+prev_rand	hello.c	/^static int prev_rand = 13;$/;"	v	file:
+primeproc	primes.c	/^primeproc(void)$/;"	f
+primeproc	primespipe.c	/^primeproc(int fd)$/;"	f
+regs	faultregs.c	/^	struct PushRegs regs;$/;"	m	struct:regs	typeref:struct:regs::PushRegs	file:
+regs	faultregs.c	/^struct regs$/;"	s	file:
+runcmd	sh.c	/^runcmd(char* s)$/;"	f
+str1	sendpage.c	/^const char *str1 = "hello child environment! how are you?";$/;"	v
+str2	sendpage.c	/^const char *str2 = "hello parent environment! I'm good.";$/;"	v
+sum	init.c	/^sum(const char *s, int n)$/;"	f
+umain	badsegment.c	/^umain(int argc, char **argv)$/;"	f
+umain	breakpoint.c	/^umain(int argc, char **argv)$/;"	f
+umain	buggyhello.c	/^umain(int argc, char **argv)$/;"	f
+umain	buggyhello2.c	/^umain(int argc, char **argv)$/;"	f
+umain	cat.c	/^umain(int argc, char **argv)$/;"	f
+umain	divzero.c	/^umain(int argc, char **argv)$/;"	f
+umain	dumbfork.c	/^umain(int argc, char **argv)$/;"	f
+umain	echo.c	/^umain(int argc, char **argv)$/;"	f
+umain	evilhello.c	/^umain(int argc, char **argv)$/;"	f
+umain	fairness.c	/^umain(int argc, char **argv)$/;"	f
+umain	faultalloc.c	/^umain(int argc, char **argv)$/;"	f
+umain	faultallocbad.c	/^umain(int argc, char **argv)$/;"	f
+umain	faultbadhandler.c	/^umain(int argc, char **argv)$/;"	f
+umain	faultdie.c	/^umain(int argc, char **argv)$/;"	f
+umain	faultevilhandler.c	/^umain(int argc, char **argv)$/;"	f
+umain	faultnostack.c	/^umain(int argc, char **argv)$/;"	f
+umain	faultread.c	/^umain(int argc, char **argv)$/;"	f
+umain	faultreadkernel.c	/^umain(int argc, char **argv)$/;"	f
+umain	faultregs.c	/^umain(int argc, char **argv)$/;"	f
+umain	faultwrite.c	/^umain(int argc, char **argv)$/;"	f
+umain	faultwritekernel.c	/^umain(int argc, char **argv)$/;"	f
+umain	forktree.c	/^umain(int argc, char **argv)$/;"	f
+umain	hello.c	/^umain(int argc, char **argv){$/;"	f
+umain	hello1.c	/^umain(int argc, char **argv)$/;"	f
+umain	icode.c	/^umain(int argc, char **argv)$/;"	f
+umain	idle.c	/^umain(int argc, char **argv)$/;"	f
+umain	init.c	/^umain(int argc, char **argv)$/;"	f
+umain	initsh.c	/^umain(int argc, char **argv)$/;"	f
+umain	ls.c	/^umain(int argc, char **argv)$/;"	f
+umain	lsfd.c	/^umain(int argc, char **argv)$/;"	f
+umain	num.c	/^umain(int argc, char **argv)$/;"	f
+umain	pingpong.c	/^umain(int argc, char **argv)$/;"	f
+umain	pingpongs.c	/^umain(int argc, char **argv)$/;"	f
+umain	primes.c	/^umain(int argc, char **argv)$/;"	f
+umain	primespipe.c	/^umain(int argc, char **argv)$/;"	f
+umain	sendpage.c	/^umain(int argc, char **argv)$/;"	f
+umain	sh.c	/^umain(int argc, char **argv)$/;"	f
+umain	softint.c	/^umain(int argc, char **argv)$/;"	f
+umain	spawnhello.c	/^umain(int argc, char **argv)$/;"	f
+umain	spawninit.c	/^umain(int argc, char **argv)$/;"	f
+umain	spin.c	/^umain(int argc, char **argv)$/;"	f
+umain	stresssched.c	/^umain(int argc, char **argv)$/;"	f
+umain	testbss.c	/^umain(int argc, char **argv)$/;"	f
+umain	testfdsharing.c	/^umain(int argc, char **argv)$/;"	f
+umain	testfile.c	/^umain(int argc, char **argv)$/;"	f
+umain	testkbd.c	/^umain(int argc, char **argv)$/;"	f
+umain	testmalloc.c	/^umain(int argc, char **argv)$/;"	f
+umain	testpipe.c	/^umain(int argc, char **argv)$/;"	f
+umain	testpiperace.c	/^umain(int argc, char **argv)$/;"	f
+umain	testpiperace2.c	/^umain(int argc, char **argv)$/;"	f
+umain	testptelibrary.c	/^umain(int argc, char **argv)$/;"	f
+umain	testpteshare.c	/^umain(int argc, char **argv)$/;"	f
+umain	testshell.c	/^umain(int argc, char **argv)$/;"	f
+umain	writemotd.c	/^umain(int argc, char **argv)$/;"	f
+umain	yield.c	/^umain(int argc, char **argv)$/;"	f
+usage	ls.c	/^usage(void)$/;"	f
+usage	lsfd.c	/^usage(void)$/;"	f
+usage	sh.c	/^usage(void)$/;"	f
+val	pingpongs.c	/^uint32_t val;$/;"	v
+wrong	testshell.c	/^wrong(int rfd, int kfd, int off)$/;"	f
+xopen	testfile.c	/^xopen(const char *path, int mode)$/;"	f	file:
+zero	divzero.c	/^int zero;$/;"	v

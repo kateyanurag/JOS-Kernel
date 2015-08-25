@@ -1,0 +1,43 @@
+
+****************************************ANSWERS TO THE QUESTIONS***************************************************
+
+1. How did you structure your transmit implementation? In particular, what do you do if the transmit ring is full?
+ANS :  
+Following are the steps for transmit implementation in the driver
+1) Initialize the transmit descriptor tail register 
+2) Initialize the transmit descriptor buffer (set the status for each entry as 0)
+3) In the transmit function, check the status of transmit descriptor and if its 1, that means the packet in this descriptor can be transmitted. So store the packet from user in the transmit buffer for transmission. Then update the tdt value.
+If the transmit ring is full, just drop the packet. In output.c, keep trying until the transmit packet system call succeeds.
+
+
+2. How did you structure your receive implementation? In particular, what do you do if the receive queue is empty and a user environment requests the next incoming packet?
+ANS:
+Following are the steps for recieve implementation in the driver
+1) Initialize the recieve descriptor tail register 
+2) Initialize the recieve descriptor buffer (set the status for each entry as 1)
+3) In the recieve function, check the status of recieve descriptor and if its 1, that means there's a recieved packet in this descriptor can be transmitted. So compy this packet into callers(user process's) buffer. Then update the rdt value.
+If the recieve ring is empty, just in input.c, keep trying until a packet can be read from the buffer.
+
+
+3. What does the web page served by JOS's web server say?
+ANS:
+This file came from JOS.
+Cheesy web page!
+
+
+4. How long approximately did it take you to do this lab?
+ANS: 10 days. 5-6 hrs per day.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+CHALLANGE EXPLANATION:
+================
+Challenge! Read about the EEPROM in the developer's manual and write the code to load the E1000's MAC address out of the EEPROM. Currently, QEMU's default MAC address is hard-coded into both your receive initialization and lwIP. Fix your initialization to use the MAC address you read from the EEPROM, add a system call to pass the MAC address to lwIP, and modify lwIP to the MAC address read from the card. Test your change by configuring QEMU to use a different MAC address.
+
+1) find_mac_address() function in kern/e1000.c
+- This function is called 3 times and it returned 2 bytes of MAC address each time.
+- The MAC address words are present in EEPROM register at the offset 0x0014 from 16-32 bits. By changing the address value from 0 to 2 (3 values) from bit 8 in the eeprom reg, we can get the words in mac address.
+
+2) System call 
+- A system call is writtem which copies these words in a buffer and returns it to lwip.
+- The system call internally calls the get_mac_address() function in kern/e1000.c which returns the mac address by combining these words.

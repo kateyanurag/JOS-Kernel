@@ -1,0 +1,55 @@
+2) It seems that using the big kernel lock guarantees that only one CPU can run the kernel code at a time. 
+Why do we still need separate kernel stacks for each CPU? 
+Describe a scenario in which using a shared kernel stack will go wrong, 
+even with the protection of the big kernel lock.
+
+ANSWER : When an Interrupt occurs, the interrupt service routine borrows the processes stack. The interrupt routine then pushes its
+parameters onto the stack. If the stack us shared by other CPU(say CPU2) and assume that interrupt has occurred on CPU1, then CPU2 
+will see the contents of interrupt service routine on topo of stack which is wrong.
+Hence there should be seperate stack for each CPU's.
+
+3) In your implementation of env_run() you should have called lcr3(). 
+Before and after the call to lcr3(), your code makes references (at least it should) to the variable e, 
+the argument to env_run. Upon loading the %cr3 register, the addressing context used by the MMU is instantly changed. 
+But a virtual address (namely e) has meaning relative to a given address context--the address context specifies the
+ physical address to which the virtual address maps. Why can the pointer e be 
+ dereferenced both before and after the addressing switch?
+ 
+ ANSWER: Since for every environment, we map the virtual addresses above UTOP to the same.
+ Hence pointer can be dereferenced before and after the Context Switch.
+ 
+ 4) Whenever the kernel switches from one environment to another, it must ensure the old environment's registers are 
+ saved so they can be restored properly later. Why? Where does this happen?
+ ANSWER : The old environment's registers are stored in the CPU trapframe. This is done in the trap() function.
+
+
+ =================================================================================
+ 					EXPLANATION OF CHALLANGE QUESTION
+ =================================================================================
+ Challange Question : Implementation of Fixed Priority Schedular
+
+ ***** How to Test the challange Question :
+ 	1. Uncomment Line number 23 in inc/lib.h and Line number 8 in kern/sched.c to enable priority schedular in both kernel and user mode  
+ 	(#define ENABLE_PRIORITY_SCHEDULING)
+ 	2. $ make clean
+ 	3. $ make run-hello (user/hello.c contains test case for priority schedular)
+ 	4. Result - Child Environments are forked with random priority (between 1 to 5) but the highest priority environment (5 is highest priority)
+ 	gets the CPU first and then the lower priority environments.
+
+ ***** Explanation
+ 	1. priority_fork()	
+ 		A new fork is written instead of using the existing fork().
+ 		int priority_fork(int priority);
+ 		This fork takes an input as a priority number(between 1 and 5) and forks a child with the given priority
+ 	2. New System Call
+ 		I wrote a new system call sys_env_assign_priority(int priority)
+ 		This system call assign the given priority to the environment who called this system call
+ 		This function is called in the priority_fork() function, when after forking the child environment, the child changes its priority.
+ 	3. Changes in sched_yield()	
+ 		Changes are also done in the scheduling algorithm (sched_yield()).
+ 		When a environment calls sched_yield(), a new environment(which is in RUNNABLE state) with priority greater than or equal to the current environment 
+ 		is selected from the envs array. This environment then gets the CPU.
+ 	4. Test Case file	
+ 		I have written a test case in user/hello.c, where the parent environment 00001000 forks some child environment and then it exits.
+ 		These child environments then inturn fork other environments.
+ 		The order of execution is clearly visible in output of the command $ make run-hello
